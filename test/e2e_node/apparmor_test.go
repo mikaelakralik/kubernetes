@@ -53,7 +53,7 @@ var _ = SIGDescribe("AppArmor", feature.AppArmor, nodefeature.AppArmor, func() {
 	if isAppArmorEnabled() {
 		ginkgo.BeforeEach(func() {
 			ginkgo.By("Loading AppArmor profiles for testing")
-			framework.ExpectNoError(loadTestProfiles(), "Could not load AppArmor test profiles")
+			framework.ExpectNoError(loadTestProfiles(), "Could not load AppArmor")
 		})
 		ginkgo.Context("when running with AppArmor", func() {
 			f := framework.NewDefaultFramework("apparmor-test")
