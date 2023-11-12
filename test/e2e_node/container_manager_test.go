@@ -44,15 +44,6 @@ import (
 	"github.com/onsi/gomega"
 )
 
-func getOOMScoreForPid(pid int) (int, error) {
-	procfsPath := path.Join("/proc", strconv.Itoa(pid), "oom_score_adj")
-	out, err := exec.Command("sudo", "cat", procfsPath).CombinedOutput()
-	if err != nil {
-		return 0, err
-	}
-	return strconv.Atoi(strings.TrimSpace(string(out)))
-}
-
 func validateOOMScoreAdjSetting(pid int, expectedOOMScoreAdj int) error {
 	oomScore, err := getOOMScoreForPid(pid)
 	if err != nil {
